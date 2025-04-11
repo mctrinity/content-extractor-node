@@ -1,0 +1,17 @@
+# Environment and runtime
+.env
+node_modules/
+# output/
+*copy*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+log/
+
+# Editor folders
+.vscode/
+.idea/
