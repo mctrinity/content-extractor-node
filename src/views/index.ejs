@@ -9,19 +9,19 @@
 <body>
   <div class="container">
     <h1>Content Extractor</h1>
+
+    <!-- 📄 Step: Module scraping -->
     <form action="/generate" method="POST">
-      <!-- <label for="username">Username or Email:</label>
-      <input type="text" name="username" id="username" required />
-
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required /> -->
-
       <label for="modules">Module URLs (comma-separated):</label>
-      <input type="text" name="modules" id="modules" placeholder="https://www.w3schools.com/html/html_intro.asp" required />
+      <input type="text" name="modules" id="modules" required />
 
       <button type="submit">Generate PDF</button>
       <button type="submit" formaction="/preview" formmethod="post" style="margin-top: 0.5rem;">Preview HTML</button>
     </form>
+
+    <div style="margin-top: 2rem;">
+      <a href="/login">🔐 Not logged in? Log in to eLearning platform</a>
+    </div>
   </div>
 </body>
 </html>

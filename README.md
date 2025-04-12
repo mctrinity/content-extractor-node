@@ -1,18 +1,19 @@
 # Node.js Content Extractor
 
-A structured Node.js application that automates content scraping from public learning platforms (like W3Schools) and generates styled PDFs — with optional HTML preview before PDF export.
+A structured Node.js application that automates login and content scraping from public or protected learning platforms (like W3Schools) and generates styled PDFs — with optional HTML preview before export.
 
 ---
 
 ## 🚀 Features
 
 - Express.js backend with EJS templating
-- Dynamic content scraping using Puppeteer
+- Secure login flow with Puppeteer and session persistence
+- Dynamic content scraping and cleanup
 - HTML preview before PDF export
 - Styled, print-ready PDF generation
-- Clean MVC-style project layout
-- Automatic removal of unwanted ads, navbars, and popups
-- Supports comma-separated full URLs (no login required)
+- MVC-style project layout for scalability
+- UI separation: login and content extraction now live on distinct pages
+- Automatic removal of ads, navbars, and distractions
 
 ---
 
@@ -25,9 +26,10 @@ content-extractor-node/
 ├── src/
 │   ├── app.js             # Express app entry point
 │   ├── routes/            # Route definitions
-│   ├── controllers/       # Route logic
-│   ├── services/          # Scraper + PDF generator
-│   └── views/             # EJS templates (form + pdf layout)
+│   ├── controllers/       # Route logic (login, scraping, PDF)
+│   ├── services/          # Puppeteer scraper + PDF generator
+│   └── views/             # EJS templates (login, form, pdf layout)
+├── user-session/          # Persistent Puppeteer session (auto-generated)
 ├── .env.example           # Sample environment config
 ├── .gitignore             # Git ignore rules
 ├── package.json           # Project metadata
@@ -55,19 +57,33 @@ http://localhost:3000
 
 ## ✅ How to Use
 
-1. Enter one or more **module URLs** (e.g., W3Schools pages)
-2. Click:
-   - **Generate PDF** – Scrapes the page and saves a print-ready PDF
-   - **Preview HTML** – Renders the cleaned-up HTML in the browser for inspection
+### 🔐 Step 1: Login
 
-You can input multiple URLs separated by commas.
+Go to `/login` and enter your credentials for the learning platform (e.g., W3Schools).
+
+- Your session is saved so you won’t need to log in again unless you clear it.
+- Successful login will redirect you automatically to the content extractor form.
+
+### 📄 Step 2: Extract Content
+
+At `/`, paste one or more **module URLs** (comma-separated).
+
+Choose an action:
+
+- **Generate PDF** – Saves styled PDFs of the content
+- **Preview HTML** – Opens cleaned HTML preview in your browser
 
 ---
 
 ## 🧰 Output
 
-- PDFs and HTML previews are saved in `/output/`
-- Preview files use the same layout as the final PDF
+All generated PDFs and preview files are saved in:
+
+```
+/output/
+```
+
+File names are timestamped and preview files match the PDF layout.
 
 ---
 
