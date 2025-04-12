@@ -87,6 +87,29 @@ File names are timestamped and preview files match the PDF layout.
 
 ---
 
+## 🛠 Troubleshooting
+
+### 🧹 Resetting Puppeteer Login Session
+
+If you encounter this error when starting the app:
+
+```
+Failed to create /user-session/SingletonLock: File exists
+```
+
+It means Puppeteer’s persistent browser session was not closed properly.
+
+To fix it, simply delete the session folder:
+
+```bash
+rm -rf ./user-session
+```
+
+This will clear your saved browser session.  
+✅ You’ll need to log in again at `/login` afterward.
+
+---
+
 ## ⚖️ Legal Note
 
 Use this tool only with content you have permission to access and extract.  

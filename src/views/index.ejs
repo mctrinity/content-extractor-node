@@ -11,13 +11,34 @@
     <h1>Content Extractor</h1>
 
     <!-- 📄 Step: Module scraping -->
-    <form action="/generate" method="POST">
+
+    <!-- PDF Generation Form -->
+    <form action="/generate" method="POST" id="generateForm">
       <label for="modules">Module URLs (comma-separated):</label>
       <input type="text" name="modules" id="modules" required />
 
       <button type="submit">Generate PDF</button>
-      <button type="submit" formaction="/preview" formmethod="post" style="margin-top: 0.5rem;">Preview HTML</button>
     </form>
+
+    <!-- Preview Form (opens in new tab) -->
+    <form action="/preview" method="POST" target="_blank" rel="noopener noreferrer" style="margin-top: 0.5rem;">
+      <input type="hidden" name="modules" id="previewModules" />
+      <button type="submit">Preview HTML</button>
+    </form>
+
+    <!-- Sync input value across forms -->
+    <script>
+      const moduleInput = document.getElementById('modules');
+      const previewInput = document.getElementById('previewModules');
+
+      // Sync whenever input changes
+      moduleInput.addEventListener('input', () => {
+        previewInput.value = moduleInput.value;
+      });
+
+      // Set initial value on page load
+      previewInput.value = moduleInput.value;
+    </script>
 
     <div style="margin-top: 2rem;">
       <a href="/login">🔐 Not logged in? Log in to eLearning platform</a>

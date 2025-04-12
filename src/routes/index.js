@@ -4,8 +4,9 @@ const generateController = require('../controllers/generateController');
 
 // Show main content extractor page
 router.get('/', (req, res) => {
-  res.render('index');
-});
+    res.render('index');
+  });
+  
 
 // Show login form page
 router.get('/login', (req, res) => {

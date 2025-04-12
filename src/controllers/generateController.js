@@ -63,6 +63,8 @@ exports.handleGenerate = async (req, res) => {
     const content = await scrapeService(moduleList);
     const pdfPath = await pdfService(content);
     res.download(pdfPath);
+
+
   } catch (err) {
     console.error(err);
     res.status(500).send('Error generating PDF.');
